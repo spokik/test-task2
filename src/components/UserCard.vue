@@ -1,8 +1,13 @@
 <template>
   <div class="hello">
-    <h1>user</h1>
-    <div>user.id</div>
+    <h3>{{user.first_name}} {{user.last_name}}</h3>
+
+    <img :src="user.avatar" alt="">
+    <div> id - {{user.id}}</div>
+    <div> email - {{user.email}}</div>
+    <button> dell</button>
   </div>
+  <hr>
 </template>
 
 <script lang="ts">
@@ -10,7 +15,7 @@ import { Options, Vue } from 'vue-class-component'
 
 @Options({
   props: {
-    msg: Array
+    user: Array
   }
 })
 export default class HelloWorld extends Vue {
