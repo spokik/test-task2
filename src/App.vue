@@ -26,8 +26,12 @@ import UserCard from './components/UserCard.vue'
         })
         .then((data) => {
           this.users = data
-          console.log(data)
         })
+    }
+  },
+  watch: {
+    users () {
+      localStorage.setItem('users', JSON.stringify(this.users))
     }
   }
 })
