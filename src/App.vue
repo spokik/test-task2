@@ -38,8 +38,10 @@ import UserCard from './components/UserCard.vue'
         })
     },
     delUser (userID: number) {
-      console.log('id польователя в методе App -> delUser' + userID)
-      // Написать логику удаляющую нужный элемент и перезаписывающую даннык
+      const filtred = this.loadUsers.filter(function (user: any) {
+        return user.id !== userID
+      })
+      this.loadUsers = filtred
     }
 
   },

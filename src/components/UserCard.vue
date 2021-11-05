@@ -15,11 +15,11 @@ import { Options, Vue } from 'vue-class-component'
 
 @Options({
   props: {
-    user: Array
+    user: Object
   },
+  emits: ['dell-user'],
   methods: {
     delUser (userID: number) {
-      console.log(userID)
       this.$emit('dell-user', userID)
     }
   }
