@@ -31,11 +31,19 @@ import UserCard from './components/UserCard.vue'
         .then((data) => {
           this.users = data.data
         })
+    },
+    delUser (userID) {
+      console.log(userID)
+
+      // sdf
     }
   },
   watch: {
     users () {
       localStorage.setItem('users', JSON.stringify(this.users))
+    },
+    loadUsers () {
+      localStorage.setItem('users', JSON.stringify(this.loadUsers))
     }
   }
 })
