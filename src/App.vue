@@ -1,14 +1,15 @@
 <template>
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+<button>Получить пользователей</button>
+  <UserCard user=''/>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
-import HelloWorld from './components/HelloWorld.vue'
+import UserCard from './components/UserCard.vue'
 
 @Options({
   components: {
-    HelloWorld
+    UserCard
   }
 })
 export default class App extends Vue {}

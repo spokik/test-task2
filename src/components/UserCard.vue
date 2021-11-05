@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
-    <h1>Тык</h1>
-    <button>Получить пользователей</button>
+    <h1>user</h1>
+    <div>user.id</div>
   </div>
 </template>
 
@@ -10,7 +10,7 @@ import { Options, Vue } from 'vue-class-component'
 
 @Options({
   props: {
-    msg: String
+    msg: Array
   }
 })
 export default class HelloWorld extends Vue {
