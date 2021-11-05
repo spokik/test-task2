@@ -1,6 +1,11 @@
 <template>
 <button @click="getUsers()">Получить пользователей</button>
-  <UserCard v-for="i in loadUsers" :user='i' :key="i.id"/>
+  <UserCard
+    v-for="i in loadUsers"
+    :user='i'
+    :key="i.id"
+    @dell-user="delUser"
+    />
 
 </template>
 
@@ -32,11 +37,11 @@ import UserCard from './components/UserCard.vue'
           this.users = data.data
         })
     },
-    delUser (userID) {
-      console.log(userID)
-
-      // sdf
+    delUser (userID: number) {
+      console.log('id польователя в методе App -> delUser' + userID)
+      // Написать логику удаляющую нужный элемент и перезаписывающую даннык
     }
+
   },
   watch: {
     users () {

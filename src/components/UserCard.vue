@@ -5,7 +5,7 @@
     <img :src="user.avatar" alt="">
     <div> id - {{user.id}}</div>
     <div> email - {{user.email}}</div>
-    <button> dell</button>
+    <button @click="delUser(user.id)"> dell</button>
   </div>
   <hr>
 </template>
@@ -16,6 +16,12 @@ import { Options, Vue } from 'vue-class-component'
 @Options({
   props: {
     user: Array
+  },
+  methods: {
+    delUser (userID: number) {
+      console.log(userID)
+      this.$emit('dell-user', userID)
+    }
   }
 })
 export default class HelloWorld extends Vue {
