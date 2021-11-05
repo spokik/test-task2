@@ -1,6 +1,6 @@
 <template>
 <button @click="getUsers()">Получить пользователей</button>
-  <UserCard v-for="i in users.data" :user='i' :key="i.id"/>
+  <UserCard v-for="i in loadUsers" :user='i' :key="i.id"/>
 
 </template>
 
@@ -14,9 +14,13 @@ import UserCard from './components/UserCard.vue'
   },
   data () {
     return {
-      users: {}
-
+      users: {},
+      loadUsers: {}
     }
+  },
+  mounted () {
+    const load = JSON.parse(localStorage.getItem('users') || '{}')
+    this.loadUsers = load
   },
   methods: {
     getUsers () {
@@ -25,7 +29,7 @@ import UserCard from './components/UserCard.vue'
           return response.json()
         })
         .then((data) => {
-          this.users = data
+          this.users = data.data
         })
     }
   },
