@@ -1,6 +1,31 @@
 # test-task2
 
-Тестовое задание:
+## Project setup
+```
+yarn install
+```
+
+### Compiles and hot-reloads for development
+```
+yarn serve
+```
+
+### Compiles and minifies for production
+```
+yarn build
+```
+
+### Run your unit tests
+```
+yarn test:unit
+```
+
+### Lints and fixes files
+```
+yarn lint
+```
+
+## Тестовое задание:
 Разработать SPA со следующим функционалом:
 1. Получение коллекции пользователей с URL-адреса
 https://reqres.in/api/users?page=2
@@ -12,8 +37,7 @@ https://reqres.in/api/users?page=2
 7. Удаление пользователей (только из LocalStorage)
 8. Обновление списка пользователей с сервера
 
-Будет плюсом:
+## Будет плюсом:
 * Unit-тесты
 * Логирование выполненных операций
 * Анимация пользовательских представлений
-
