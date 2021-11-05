@@ -35,12 +35,11 @@ import UserCard from './components/UserCard.vue'
         })
         .then((data) => {
           this.users = data.data
+          this.loadUsers = data.data
         })
     },
     delUser (userID: number) {
-      const filtred = this.loadUsers.filter(function (user: any) {
-        return user.id !== userID
-      })
+      const filtred = this.loadUsers.filter((user: {id: number}) => user.id !== userID)
       this.loadUsers = filtred
     }
 

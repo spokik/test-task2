@@ -4,7 +4,7 @@
 
     <img :src="user.avatar" alt="">
     <div> id - {{user.id}}</div>
-    <div> email - {{user.email}}</div>
+    <div  @click="editUserEmail(user.id)"> email - {{user.email}}</div>
     <button @click="delUser(user.id)"> dell</button>
   </div>
   <hr>
@@ -17,10 +17,13 @@ import { Options, Vue } from 'vue-class-component'
   props: {
     user: Object
   },
-  emits: ['dell-user'],
+  emits: ['dell-user', 'edit-user-email'],
   methods: {
     delUser (userID: number) {
       this.$emit('dell-user', userID)
+    },
+    editUserEmail (userID: number) {
+      this.$emit('edit-user-email', userID)
     }
   }
 })
@@ -29,7 +32,6 @@ export default class HelloWorld extends Vue {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;
