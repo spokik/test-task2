@@ -1,5 +1,5 @@
 <template>
-  <div v-if="!isEditedEmail" @click="activeEdit">Email: {{email}} </div>
+  <div v-if="!isEditedEmail" @click="activeEdit"><b>Email: </b>{{email}} </div>
   <input
     id=""
     v-if="isEditedEmail"
