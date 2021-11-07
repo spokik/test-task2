@@ -6,6 +6,8 @@
     :key="i.id"
     @dell-user="delUser"
     @edit-user-email="setNewUserEmail"
+    @edit-user-lastname="setNewUserLastName"
+    @edit-user-firstname="setNewUserFirstName"
     />
 
 </template>
@@ -47,6 +49,18 @@ import UserCard from './components/UserCard.vue'
       const result = this.loadUsers.findIndex((item: any) => item.id === event.userID)
       const spredArr = [...this.loadUsers]
       spredArr[result].email = event.userEmail
+      this.loadUsers = spredArr
+    },
+    setNewUserFirstName (event:{userID: number, firstName: string}) {
+      const result = this.loadUsers.findIndex((item: any) => item.id === event.userID)
+      const spredArr = [...this.loadUsers]
+      spredArr[result].first_name = event.firstName
+      this.loadUsers = spredArr
+    },
+    setNewUserLastName (event:{userID: number, lastName: string}) {
+      const result = this.loadUsers.findIndex((item: any) => item.id === event.userID)
+      const spredArr = [...this.loadUsers]
+      spredArr[result].last_name = event.lastName
       this.loadUsers = spredArr
     }
 
