@@ -20,6 +20,7 @@
       @edit-user-email="$emit('edit-user-email', $event)"
 
       />
+      <br>
     <button @click="delUser(user.id)"> dell</button>
   </div>
   <hr>
