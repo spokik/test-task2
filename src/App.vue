@@ -1,4 +1,4 @@
-<template>
+<template class="app" >
 <button @click="getUsers()">Получить пользователей</button>
 <div class="list">
   <UserCard
@@ -100,8 +100,11 @@ export default class App extends Vue {}
   text-align: left;
   width: 500px;
 }
+.app{
+  background-color: rgb(231, 18, 18);
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

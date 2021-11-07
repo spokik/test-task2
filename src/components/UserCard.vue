@@ -1,5 +1,5 @@
 <template>
-<div class="name"  @click="isActive = !isActive">{{user.first_name}}{{user.last_name}}</div>
+<div class="name"  @click="isActive = !isActive">{{user.first_name}} {{user.last_name}}</div>
 <transition name="fade">
   <div class="card" v-if="isActive">
     <img class="avatar" :src="user.avatar" alt="">
@@ -70,7 +70,7 @@ export default class HelloWorld extends Vue {
   opacity: 0;
 }
 .card{
-  border: 2px solid #4261ed;
+  border: 2px solid #88d0fa;
   padding: 20px 40px;
   margin: 10px 0;
 }
