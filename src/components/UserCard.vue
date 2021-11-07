@@ -1,21 +1,57 @@
 <template>
-  <div class="hello">
-    <h3>{{user.first_name}} {{user.last_name}}</h3>
+  <div class="name"  @click="showCard">{{user.first_name}}{{user.last_name}}</div>
+  <div class="card" v-if="isActive">
+    <h3>
+      <UserCardFirstName
+        :firstName='user.first_name'
+        :id="user.id"
+        @edit-user-firstname="$emit('edit-user-firstname', $event)" />
+      <UserCardLastName
+        :lastName='user.last_name'
+        :id="user.id"
+        @edit-user-lastname="$emit('edit-user-lastname', $event)" />
+    </h3>
 
     <img :src="user.avatar" alt="">
     <div> id - {{user.id}}</div>
-    <div> email - {{user.email}}</div>
-    <button> dell</button>
+    <UserCardEmail
+      :email='user.email'
+      :id="user.id"
+      @edit-user-email="$emit('edit-user-email', $event)"
+
+      />
+      <br>
+    <button @click="delUser(user.id)"> dell</button>
   </div>
   <hr>
 </template>
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
+import UserCardEmail from './UserCardEmail.vue'
+import UserCardFirstName from './UserCardFirstName.vue'
+import UserCardLastName from './UserCardLastName.vue'
 
 @Options({
   props: {
-    user: Array
+    user: Object
+  },
+  components: {
+    UserCardEmail,
+    UserCardFirstName,
+    UserCardLastName
+  },
+  emits: ['dell-user', 'edit-user-email', 'edit-user-lastname', 'edit-user-firstname'],
+  data () {
+    return { isActive: false }
+  },
+  methods: {
+    delUser (userID: number) {
+      this.$emit('dell-user', userID)
+    },
+    showCard () {
+      this.isActive = !this.isActive
+    }
   }
 })
 export default class HelloWorld extends Vue {
@@ -23,7 +59,6 @@ export default class HelloWorld extends Vue {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;
