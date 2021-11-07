@@ -1,9 +1,9 @@
 <template>
-<div class="name"  @click="isActive = !isActive">{{user.first_name}} {{user.last_name}}</div>
+<div class="name"  @click="isActive = !isActive"><h4>{{user.first_name}} {{user.last_name}}</h4> </div>
 <transition name="fade">
   <div class="card" v-if="isActive">
     <img class="avatar" :src="user.avatar" alt="">
-    <h3>
+
       <UserCardFirstName
         :firstName='user.first_name'
         :id="user.id"
@@ -12,7 +12,6 @@
         :lastName='user.last_name'
         :id="user.id"
         @edit-user-lastname="$emit('edit-user-lastname', $event)" />
-    </h3>
 
     <div><b>id: </b>{{user.id}}</div>
     <UserCardEmail
@@ -70,7 +69,7 @@ export default class HelloWorld extends Vue {
   opacity: 0;
 }
 .card{
-  border: 2px solid #88d0fa;
+  border: 2px solid #e0f1fa;
   padding: 20px 40px;
   margin: 10px 0;
 }
