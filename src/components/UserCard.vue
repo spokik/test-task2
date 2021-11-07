@@ -4,7 +4,11 @@
 
     <img :src="user.avatar" alt="">
     <div> id - {{user.id}}</div>
-    <div  @click="editUserEmail(user.id)"> email - {{user.email}}</div>
+    <UserCardEmail
+      :email='user.email'
+      :id="user.id"
+      @edit-user-email="$emit('edit-user-email', $event)"
+      />
     <button @click="delUser(user.id)"> dell</button>
   </div>
   <hr>
@@ -12,18 +16,19 @@
 
 <script lang="ts">
 import { Options, Vue } from 'vue-class-component'
+import UserCardEmail from './UserCardEmail.vue'
 
 @Options({
   props: {
     user: Object
   },
+  components: {
+    UserCardEmail
+  },
   emits: ['dell-user', 'edit-user-email'],
   methods: {
     delUser (userID: number) {
       this.$emit('dell-user', userID)
-    },
-    editUserEmail (userID: number) {
-      this.$emit('edit-user-email', userID)
     }
   }
 })

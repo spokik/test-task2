@@ -5,6 +5,7 @@
     :user='i'
     :key="i.id"
     @dell-user="delUser"
+    @edit-user-email="setNewUserEmail"
     />
 
 </template>
@@ -41,6 +42,12 @@ import UserCard from './components/UserCard.vue'
     delUser (userID: number) {
       const filtred = this.loadUsers.filter((user: {id: number}) => user.id !== userID)
       this.loadUsers = filtred
+    },
+    setNewUserEmail (event:{userID: number, userEmail: string}) {
+      const result = this.loadUsers.findIndex((item: any) => item.id === event.userID)
+      const spredArr = [...this.loadUsers]
+      spredArr[result].email = event.userEmail
+      this.loadUsers = spredArr
     }
 
   },
