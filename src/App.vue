@@ -1,5 +1,6 @@
-<template>
+<template class="app" >
 <button @click="getUsers()">Получить пользователей</button>
+<div class="list">
   <UserCard
     v-for="i in loadUsers"
     :user='i'
@@ -9,7 +10,7 @@
     @edit-user-lastname="setNewUserLastName"
     @edit-user-firstname="setNewUserFirstName"
     />
-
+</div>
 </template>
 
 <script lang="ts">
@@ -94,8 +95,16 @@ export default class App extends Vue {}
 </script>
 
 <style>
+.list{
+  margin: 10px 40px;
+  text-align: left;
+  width: 500px;
+}
+.app{
+  background-color: rgb(231, 18, 18);
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: Montserrat, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

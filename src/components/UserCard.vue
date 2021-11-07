@@ -1,6 +1,8 @@
 <template>
-  <div class="name"  @click="showCard">{{user.first_name}}{{user.last_name}}</div>
+<div class="name"  @click="isActive = !isActive">{{user.first_name}} {{user.last_name}}</div>
+<transition name="fade">
   <div class="card" v-if="isActive">
+    <img class="avatar" :src="user.avatar" alt="">
     <h3>
       <UserCardFirstName
         :firstName='user.first_name'
@@ -12,8 +14,7 @@
         @edit-user-lastname="$emit('edit-user-lastname', $event)" />
     </h3>
 
-    <img :src="user.avatar" alt="">
-    <div> id - {{user.id}}</div>
+    <div><b>id: </b>{{user.id}}</div>
     <UserCardEmail
       :email='user.email'
       :id="user.id"
@@ -23,6 +24,8 @@
       <br>
     <button @click="delUser(user.id)"> dell</button>
   </div>
+</transition>
+
   <hr>
 </template>
 
@@ -48,9 +51,6 @@ import UserCardLastName from './UserCardLastName.vue'
   methods: {
     delUser (userID: number) {
       this.$emit('dell-user', userID)
-    },
-    showCard () {
-      this.isActive = !this.isActive
     }
   }
 })
@@ -60,8 +60,25 @@ export default class HelloWorld extends Vue {
 </script>
 
 <style scoped>
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+.card{
+  border: 2px solid #88d0fa;
+  padding: 20px 40px;
+  margin: 10px 0;
+}
+.avatar{
+float: right;
+}
 h3 {
-  margin: 40px 0 0;
+  margin: 0px 0 0;
 }
 ul {
   list-style-type: none;
