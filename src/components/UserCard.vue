@@ -1,5 +1,6 @@
 <template>
-  <div class="hello">
+  <div class="name"  @click="showCard">{{user.first_name}}{{user.last_name}}</div>
+  <div class="card" v-if="isActive">
     <h3>
       <UserCardFirstName
         :firstName='user.first_name'
@@ -40,9 +41,15 @@ import UserCardLastName from './UserCardLastName.vue'
     UserCardLastName
   },
   emits: ['dell-user', 'edit-user-email', 'edit-user-lastname', 'edit-user-firstname'],
+  data () {
+    return { isActive: false }
+  },
   methods: {
     delUser (userID: number) {
       this.$emit('dell-user', userID)
+    },
+    showCard () {
+      this.isActive = !this.isActive
     }
   }
 })
